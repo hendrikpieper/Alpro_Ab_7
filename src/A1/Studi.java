@@ -23,14 +23,24 @@ public class Studi {
         sb.append(" und ist ");
         sb.append(this.alter);
         sb.append(" Jahre alt.");
+        sb.append(" Der Studi besucht folgende Kurse: ");
+        for(int i = 0; i < this.kurszugehörigkeit.length; i++){
+            sb.append(kurszugehörigkeit[i].name);
+            sb.append(" ");
+        }
         System.out.println(sb);
+
     }
 
     public void einschreiben(Kurs kurs){
-        if ()
-        int anzahlKurse = this.kurszugehörigkeit.length;
-        Kurs[] temp = Arrays.copyOf(kurszugehörigkeit, (kurszugehörigkeit.length + 1));
-        kurszugehörigkeit = temp;
-        kurszugehörigkeit[kurszugehörigkeit.length] = kurs;
+        if(kurs.einschreiben()) {
+            int anzahlKurse = this.kurszugehörigkeit.length;
+            Kurs[] temp = Arrays.copyOf(kurszugehörigkeit, anzahlKurse + 1);
+            kurszugehörigkeit = temp;
+            kurszugehörigkeit[anzahlKurse] = kurs;
+        }
+        else{
+            System.out.println("Der Kurs " + kurs.name + " ist leider schon voll!");
+        }
     }
 }
